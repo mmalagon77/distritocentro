@@ -19,7 +19,7 @@
         }
 
         .hero-bg {
-            background-image: linear-gradient(rgba(30, 41, 59, 0.7), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
         }
@@ -41,65 +41,78 @@
 <body class="flex flex-col min-h-screen">
 
     <!-- HERO SECTION -->
-    <header class="hero-bg text-white py-20 px-6 text-center relative overflow-hidden">
+    <header class="hero-bg text-white py-24 px-6 text-center relative overflow-hidden">
         <div class="relative z-10 max-w-4xl mx-auto">
-            <span class="bg-blue-500/30 text-blue-100 py-1 px-4 rounded-full text-sm font-semibold tracking-wide border border-blue-400/30 backdrop-blur-sm mb-4 inline-block">
-                PLAN PASTORAL
+            <span class="bg-blue-500/20 text-blue-100 py-1 px-4 rounded-full text-sm font-semibold tracking-wide border border-blue-400/30 backdrop-blur-sm mb-6 inline-block">
+                DISCIPULADO CRISTIANO
             </span>
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight serif-font">Creciendo en la Verdad</h1>
-            <p class="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto font-light">
-                Una jornada de discipulado para ordenar tu vida, conocer tu propósito y afirmar tu fe.
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight serif-font">Creciendo en la Verdad</h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Una jornada para ordenar tu vida, conocer tu propósito y afirmar tu fe a través de enseñanzas prácticas.
             </p>
         </div>
-        
-        <!-- Decoración -->
-        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
     </header>
 
-    <!-- VERSÍCULO DEL DÍA (Toque inspirador) -->
-    <div class="bg-slate-50 border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center gap-6">
-            <div class="flex-shrink-0 bg-yellow-100 p-3 rounded-full text-yellow-600">
-                <i data-lucide="sun" class="w-8 h-8"></i>
+    <!-- VERSÍCULO DEL DÍA -->
+    <div class="bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
+            <div class="text-yellow-500">
+                <i data-lucide="sun" class="w-6 h-6"></i>
             </div>
-            <div class="text-center md:text-left">
+            <div>
                 <p class="text-slate-600 italic serif-font text-lg">"Lámpara es a mis pies tu palabra, y lumbrera a mi camino."</p>
-                <p class="text-slate-400 text-sm font-bold mt-1 tracking-wide uppercase">Salmo 119:105</p>
+                <p class="text-slate-400 text-xs font-bold mt-1 tracking-wide uppercase">Salmo 119:105</p>
             </div>
         </div>
     </div>
 
     <!-- GRID DE LECCIONES -->
-    <main class="flex-grow max-w-6xl mx-auto px-6 py-12">
-        <div class="flex items-center justify-between mb-8">
+    <main class="flex-grow max-w-6xl mx-auto px-6 py-12 w-full">
+        <div class="flex items-center justify-between mb-10 border-b border-slate-200 pb-4">
             <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
                 <i data-lucide="map" class="text-blue-600"></i>
                 Tu Ruta de Aprendizaje
             </h2>
-            <span class="text-sm text-slate-500 bg-white px-3 py-1 rounded-full shadow-sm border">7 Lecciones</span>
+            <span class="text-xs font-bold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full uppercase tracking-wider">7 Etapas</span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- LECCIÓN 1 -->
-            <a href="leccion1.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block">
+            <!-- LECCIÓN 1 (ACTIVA Y ENLAZADA CORRECTAMENTE) -->
+            <a href="Leccion_1.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5">
                 <div class="flex justify-between items-start mb-4">
                     <div class="icon-box p-3 rounded-xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                         <i data-lucide="train-front" class="w-8 h-8"></i>
                     </div>
-                    <span class="text-xs font-bold text-slate-400 uppercase">Lección 01</span>
+                    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
                 </div>
+                
                 <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">El Orden Correcto</h3>
-                <p class="text-slate-500 text-sm mb-4">La analogía del tren: Entendiendo el lugar de los hechos, la fe y los sentimientos.</p>
-                <div class="flex items-center text-blue-600 text-sm font-bold mt-auto">
-                    Comenzar <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"></i>
+                <p class="text-slate-500 text-sm mb-4 leading-relaxed">
+                    La analogía del tren: Entendiendo el lugar de los hechos, la fe y los sentimientos.
+                </p>
+
+                <!-- Indicadores de Contenido -->
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="video" class="w-3 h-3 mr-1"></i> Video
+                    </span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio
+                    </span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia
+                    </span>
+                </div>
+
+                <div class="flex items-center text-blue-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 1 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </a>
 
-            <!-- LECCIÓN 2 -->
-            <a href="leccion2.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block relative overflow-hidden">
-                <!-- Etiqueta de "Nuevo" o "Actual" -->
-                <div class="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">ACTUAL</div>
+            <!-- LECCIÓN 2 (Trivia disponible) -->
+            <a href="leccion2.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">DISPONIBLE</div>
                 
                 <div class="flex justify-between items-start mb-4">
                     <div class="icon-box p-3 rounded-xl text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
@@ -109,96 +122,90 @@
                 </div>
                 <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">Sentimientos vs Verdades</h3>
                 <p class="text-slate-500 text-sm mb-4">Descubre los 5 regalos de Dios que combaten las emociones negativas.</p>
-                <div class="flex items-center text-purple-600 text-sm font-bold mt-auto">
-                    Comenzar <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"></i>
+                <div class="flex items-center text-purple-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Iniciar Actividad <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </a>
 
-            <!-- LECCIÓN 3 (Bloqueada/Futura - Ejemplo) -->
-            <a href="leccion3.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block opacity-90">
+            <!-- LECCIÓN 3 (Próximamente) -->
+            <div class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group opacity-75 grayscale hover:grayscale-0 transition-all">
                 <div class="flex justify-between items-start mb-4">
-                    <div class="icon-box p-3 rounded-xl text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                    <div class="bg-slate-200 p-3 rounded-xl text-slate-400">
                         <i data-lucide="fingerprint" class="w-8 h-8"></i>
                     </div>
-                    <span class="text-xs font-bold text-slate-400 uppercase">Lección 03</span>
+                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i>
                 </div>
-                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-emerald-600 transition-colors">Identidad de Hijos</h3>
-                <p class="text-slate-500 text-sm mb-4">Comprendiendo quiénes somos realmente en Cristo y nuestra herencia.</p>
-                <div class="flex items-center text-emerald-600 text-sm font-bold mt-auto">
-                    Comenzar <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
+                <h3 class="text-xl font-bold text-slate-600 mb-2">Identidad de Hijos</h3>
+                <p class="text-slate-400 text-sm mb-4">Comprendiendo quiénes somos realmente en Cristo.</p>
+                <div class="text-xs font-bold text-slate-400 mt-auto uppercase tracking-wide">Próximamente</div>
+            </div>
 
-            <!-- LECCIÓN 4 -->
-            <a href="#" onclick="alert('Esta lección estará disponible pronto.')" class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group cursor-default block opacity-70">
+            <!-- LECCIÓN 4 (Próximamente) -->
+            <div class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group opacity-75">
                 <div class="flex justify-between items-start mb-4">
                     <div class="bg-slate-200 p-3 rounded-xl text-slate-400">
                         <i data-lucide="mic-2" class="w-8 h-8"></i>
                     </div>
-                    <span class="text-xs font-bold text-slate-400 uppercase">Lección 04</span>
+                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i>
                 </div>
-                <h3 class="text-xl font-bold text-slate-500 mb-2">El Poder de la Oración</h3>
+                <h3 class="text-xl font-bold text-slate-600 mb-2">El Poder de la Oración</h3>
                 <p class="text-slate-400 text-sm mb-4">Cómo comunicarnos efectivamente con el Padre.</p>
-                <div class="flex items-center text-slate-400 text-sm font-bold mt-auto">
-                    <i data-lucide="lock" class="w-3 h-3 mr-1"></i> Próximamente
-                </div>
-            </a>
+                <div class="text-xs font-bold text-slate-400 mt-auto uppercase tracking-wide">Próximamente</div>
+            </div>
 
-             <!-- LECCIÓN 5 -->
-             <a href="#" onclick="alert('Esta lección estará disponible pronto.')" class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group cursor-default block opacity-70">
+             <!-- LECCIÓN 5 (Próximamente) -->
+             <div class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group opacity-75">
                 <div class="flex justify-between items-start mb-4">
                     <div class="bg-slate-200 p-3 rounded-xl text-slate-400">
                         <i data-lucide="book-open" class="w-8 h-8"></i>
                     </div>
-                    <span class="text-xs font-bold text-slate-400 uppercase">Lección 05</span>
+                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i>
                 </div>
-                <h3 class="text-xl font-bold text-slate-500 mb-2">Sanando el Corazón</h3>
+                <h3 class="text-xl font-bold text-slate-600 mb-2">Sanando el Corazón</h3>
                 <p class="text-slate-400 text-sm mb-4">Un viaje profundo hacia la sanidad interior.</p>
-                <div class="flex items-center text-slate-400 text-sm font-bold mt-auto">
-                    <i data-lucide="lock" class="w-3 h-3 mr-1"></i> Próximamente
-                </div>
-            </a>
+                <div class="text-xs font-bold text-slate-400 mt-auto uppercase tracking-wide">Próximamente</div>
+            </div>
 
-             <!-- LECCIÓN 6 -->
-             <a href="#" onclick="alert('Esta lección estará disponible pronto.')" class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group cursor-default block opacity-70">
+             <!-- LECCIÓN 6 (Próximamente) -->
+             <div class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group opacity-75">
                 <div class="flex justify-between items-start mb-4">
                     <div class="bg-slate-200 p-3 rounded-xl text-slate-400">
                         <i data-lucide="compass" class="w-8 h-8"></i>
                     </div>
-                    <span class="text-xs font-bold text-slate-400 uppercase">Lección 06</span>
+                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i>
                 </div>
-                <h3 class="text-xl font-bold text-slate-500 mb-2">Una Vida con Propósito</h3>
+                <h3 class="text-xl font-bold text-slate-600 mb-2">Una Vida con Propósito</h3>
                 <p class="text-slate-400 text-sm mb-4">Descubriendo para qué fuimos creados.</p>
-                <div class="flex items-center text-slate-400 text-sm font-bold mt-auto">
-                    <i data-lucide="lock" class="w-3 h-3 mr-1"></i> Próximamente
-                </div>
-            </a>
+                <div class="text-xs font-bold text-slate-400 mt-auto uppercase tracking-wide">Próximamente</div>
+            </div>
 
-             <!-- LECCIÓN 7 -->
-             <a href="#" onclick="alert('Esta lección estará disponible pronto.')" class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group cursor-default block opacity-70">
+             <!-- LECCIÓN 7 (Próximamente) -->
+             <div class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group opacity-75">
                 <div class="flex justify-between items-start mb-4">
                     <div class="bg-slate-200 p-3 rounded-xl text-slate-400">
                         <i data-lucide="award" class="w-8 h-8"></i>
                     </div>
-                    <span class="text-xs font-bold text-slate-400 uppercase">Lección 07</span>
+                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i>
                 </div>
-                <h3 class="text-xl font-bold text-slate-500 mb-2">Caminando en Libertad</h3>
+                <h3 class="text-xl font-bold text-slate-600 mb-2">Caminando en Libertad</h3>
                 <p class="text-slate-400 text-sm mb-4">Aplicando todo lo aprendido para una vida victoriosa.</p>
-                <div class="flex items-center text-slate-400 text-sm font-bold mt-auto">
-                    <i data-lucide="lock" class="w-3 h-3 mr-1"></i> Próximamente
-                </div>
-            </a>
+                <div class="text-xs font-bold text-slate-400 mt-auto uppercase tracking-wide">Próximamente</div>
+            </div>
 
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
-        <div class="mb-4">
-            <i data-lucide="anchor" class="w-8 h-8 mx-auto text-slate-600 mb-2"></i>
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="mb-6 flex justify-center">
+                <div class="bg-slate-800 p-3 rounded-full">
+                    <i data-lucide="anchor" class="w-6 h-6 text-slate-300"></i>
+                </div>
+            </div>
+            <p class="text-sm mb-2">© 2024 Plan Pastoral. Todos los derechos reservados.</p>
+            <p class="text-xs text-slate-600">Diseñado para el crecimiento espiritual y personal.</p>
         </div>
-        <p class="text-sm">© 2024 Plan Pastoral. Todos los derechos reservados.</p>
-        <p class="text-xs mt-2 text-slate-600">Diseñado para el crecimiento espiritual.</p>
     </footer>
 
     <script>
