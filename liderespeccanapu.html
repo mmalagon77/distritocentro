@@ -72,7 +72,34 @@
                     <input type="text" id="distrito" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Escriba el distrito">
                 </div>
 
-                <!-- Nuevo Campo: Grupo WhatsApp -->
+                <!-- Nuevos Campos: Día y Hora -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Día de tu ministerio -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-slate-600 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-indigo-500"></i> Día de tu ministerio</label>
+                        <div class="relative">
+                            <select id="diaMinisterio" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none appearance-none bg-white">
+                                <option value="" disabled selected>Seleccione el día...</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miércoles">Miércoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sábado">Sábado</option>
+                                <option value="Domingo">Domingo</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="absolute right-4 top-3.5 w-4 h-4 text-slate-500 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <!-- Hora -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-slate-600 flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-indigo-500"></i> Hora</label>
+                        <input type="time" id="horaMinisterio" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+                </div>
+
+                <!-- Campo: Grupo WhatsApp -->
                 <div class="space-y-2">
                     <label class="text-sm font-semibold text-slate-600 flex items-center gap-2 leading-tight">
                         <i data-lucide="message-circle" class="w-4 h-4 text-indigo-500 flex-shrink-0"></i> 
@@ -98,7 +125,6 @@
         <div id="successMessage" class="hidden p-12 text-center flex-col items-center justify-center space-y-4 fade-in">
             <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4"><i data-lucide="check" class="w-10 h-10 text-green-600"></i></div>
             
-            <!-- Mensaje Modificado -->
             <h3 class="text-xl font-bold text-slate-800 uppercase leading-relaxed">
                 GRACIAS POR TU APOYO<br>TUS DATOS ESTAN REGISTRADOS
             </h3>
@@ -189,7 +215,9 @@
                     telefono: document.getElementById('telefono').value,
                     departamento: document.getElementById('departamento').value,
                     distrito: document.getElementById('distrito').value,
-                    grupoWhatsapp: document.getElementById('grupoWhatsapp').value, // Nuevo dato
+                    diaMinisterio: document.getElementById('diaMinisterio').value, // Nuevo dato
+                    horaMinisterio: document.getElementById('horaMinisterio').value, // Nuevo dato
+                    grupoWhatsapp: document.getElementById('grupoWhatsapp').value,
                     fecha: new Date().toISOString(),
                     fechaLegible: new Date().toLocaleString()
                 });
@@ -233,13 +261,13 @@
                 
                 const querySnapshot = await getDocs(q);
 
-                // CSV Actualizado con nueva columna 'En Grupo Whatsapp'
-                let csvContent = "Fecha,Nombres,Apellidos,Telefono,Departamento,Distrito,En Grupo Whatsapp\n";
+                // CSV Actualizado con nuevas columnas
+                let csvContent = "Fecha,Nombres,Apellidos,Telefono,Departamento,Distrito,Dia Ministerio,Hora,En Grupo Whatsapp\n";
                 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
                     const s = (str) => (str || "").replace(/"/g, '""');
-                    csvContent += `"${s(data.fechaLegible)}","${s(data.nombres)}","${s(data.apellidos)}","${s(data.telefono)}","${s(data.departamento)}","${s(data.distrito)}","${s(data.grupoWhatsapp)}"\n`;
+                    csvContent += `"${s(data.fechaLegible)}","${s(data.nombres)}","${s(data.apellidos)}","${s(data.telefono)}","${s(data.departamento)}","${s(data.distrito)}","${s(data.diaMinisterio)}","${s(data.horaMinisterio)}","${s(data.grupoWhatsapp)}"\n`;
                 });
 
                 const BOM = "\uFEFF";
