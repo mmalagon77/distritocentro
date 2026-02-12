@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - LÍDERES MINISTERIO PEC CANAPU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col items-center justify-center p-4 font-sans text-slate-800">
+
+    <div class="bg-white w-full max-w-lg rounded-2xl shadow-xl overflow-hidden fade-in mb-6">
+        <div class="bg-indigo-700 p-8 text-center relative overflow-hidden">
+            <h1 class="text-white text-2xl font-bold tracking-wider relative z-10 uppercase">LÍDERES MINISTERIO</h1>
+            <h2 class="text-indigo-200 text-lg font-semibold mt-1 relative z-10">PEC - CANAPU</h2>
+            <div class="mt-4 flex justify-center relative z-10">
+                <span class="bg-indigo-600 text-indigo-100 text-xs px-3 py-1 rounded-full uppercase tracking-widest">Base de Datos: Nube</span>
+            </div>
+        </div>
+
+        <!-- Alerta de Configuración -->
+        <div id="configAlert" class="bg-red-100 text-red-800 p-4 text-sm text-center border-b border-red-200 hidden">
+            <i data-lucide="alert-triangle" class="w-5 h-5 inline mr-1 mb-1"></i> 
+            <span id="configErrorMsg"><b>Atención:</b> Error de configuración de Firebase.</span>
+        </div>
+
+        <div class="p-8" id="formContainer">
+            <form id="registroForm" class="space-y-6" onsubmit="manejarEnvioCloud(event)">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-slate-600 flex items-center gap-2"><i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> Nombres</label>
+                        <input type="text" id="nombres" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-slate-600 flex items-center gap-2"><i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> Apellidos</label>
+                        <input type="text" id="apellidos" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+                </div>
+
+                <!-- Campo: Teléfono Móvil -->
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-slate-600 flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-indigo-500"></i> Teléfono Móvil</label>
+                    <input type="tel" id="telefono" required 
+                        pattern="[0-9]*" 
+                        inputmode="numeric"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none" 
+                        placeholder="Ingrese solo números">
+                </div>
+
+                <!-- Campo: Departamento -->
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-slate-600 flex items-center gap-2"><i data-lucide="map" class="w-4 h-4 text-indigo-500"></i> Departamento</label>
+                    <div class="relative">
+                        <select id="departamento" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none appearance-none bg-white">
+                            <option value="" disabled selected>Seleccione el departamento...</option>
+                            <option value="CAUCA">CAUCA</option>
+                            <option value="NARIÑO">NARIÑO</option>
+                            <option value="PUTUMAYO">PUTUMAYO</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="absolute right-4 top-3.5 w-4 h-4 text-slate-500 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- Campo: Distrito -->
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-slate-600 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-indigo-500"></i> Distrito</label>
+                    <input type="text" id="distrito" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Escriba el distrito">
+                </div>
+
+                <!-- Nuevo Campo: Grupo WhatsApp -->
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-slate-600 flex items-center gap-2 leading-tight">
+                        <i data-lucide="message-circle" class="w-4 h-4 text-indigo-500 flex-shrink-0"></i> 
+                        ¿Estás en el grupo de WhatsApp de líderes del PEC de la Territorial?
+                    </label>
+                    <div class="relative">
+                        <select id="grupoWhatsapp" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none appearance-none bg-white">
+                            <option value="" disabled selected>Seleccione una opción...</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="absolute right-4 top-3.5 w-4 h-4 text-slate-500 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-lg shadow-lg flex justify-center items-center gap-2 transition-all">
+                    <span>Guardar Datos</span>
+                    <i data-lucide="save" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+
+        <div id="successMessage" class="hidden p-12 text-center flex-col items-center justify-center space-y-4 fade-in">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4"><i data-lucide="check" class="w-10 h-10 text-green-600"></i></div>
+            
+            <!-- Mensaje Modificado -->
+            <h3 class="text-xl font-bold text-slate-800 uppercase leading-relaxed">
+                GRACIAS POR TU APOYO<br>TUS DATOS ESTAN REGISTRADOS
+            </h3>
+            
+            <button onclick="resetearFormulario()" class="mt-6 text-indigo-600 font-semibold hover:underline">Registrar otro líder</button>
+        </div>
+        
+        <div class="bg-slate-50 p-3 text-center border-t border-slate-200">
+            <button onclick="descargarDesdeNube()" class="text-xs text-slate-400 hover:text-indigo-600 flex items-center justify-center gap-1 w-full">
+                <i data-lucide="lock" class="w-3 h-3"></i> Acceso Admin: Descargar Todo
+            </button>
+        </div>
+    </div>
+
+    <!-- Importar Firebase SDKs desde CDN -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAwYSQG5PD2hMsKXuPITlnMOW6wm7Iir_Q",
+            authDomain: "masterplan-canapu.firebaseapp.com",
+            projectId: "masterplan-canapu",
+            storageBucket: "masterplan-canapu.firebasestorage.app",
+            messagingSenderId: "291502876776",
+            appId: "1:291502876776:web:ee1a179984f8b2b61bb3dd",
+            measurementId: "G-VMSQ1YQRHT"
+        };
+
+        let db, auth;
+        let isConfigured = false;
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            
+            signInAnonymously(auth).then(() => {
+                console.log("Conectado a Firebase anónimamente");
+                document.getElementById('configAlert').classList.add('hidden');
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('submitBtn').classList.remove('opacity-50', 'cursor-not-allowed');
+            }).catch((error) => {
+                console.error("Error de autenticación:", error);
+                const alertBox = document.getElementById('configAlert');
+                const msgBox = document.getElementById('configErrorMsg');
+                const submitBtn = document.getElementById('submitBtn');
+                alertBox.classList.remove('hidden');
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+                if (error.code === 'auth/configuration-not-found' || error.code === 'auth/operation-not-allowed' || error.code === 'auth/admin-restricted-operation') {
+                    msgBox.innerHTML = `<b>ACCIÓN REQUERIDA:</b> Habilita Autenticación Anónima en la consola de Firebase.`;
+                } else {
+                    msgBox.innerHTML = `<b>Error de Conexión:</b> ${error.message}`;
+                }
+                lucide.createIcons();
+            });
+            isConfigured = true;
+        } catch (error) {
+            console.error("Error al inicializar Firebase:", error);
+            document.getElementById('configAlert').classList.remove('hidden');
+            document.getElementById('configErrorMsg').innerHTML = `Error de configuración: ${error.message}`;
+            document.getElementById('submitBtn').disabled = true;
+        }
+
+        window.manejarEnvioCloud = async function(event) {
+            event.preventDefault();
+            
+            if (!auth.currentUser) {
+                try { await signInAnonymously(auth); } catch(e) { 
+                    alert("Error crítico: No se puede conectar a la base de datos."); return; 
+                }
+            }
+
+            const btn = document.getElementById('submitBtn');
+            const originalContent = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin mr-2"><i data-lucide="loader-2"></i></span> Guardando...`;
+            lucide.createIcons();
+
+            try {
+                // Guardar datos incluyendo la nueva respuesta
+                await addDoc(collection(db, "lideres_canapu"), {
+                    nombres: document.getElementById('nombres').value,
+                    apellidos: document.getElementById('apellidos').value,
+                    telefono: document.getElementById('telefono').value,
+                    departamento: document.getElementById('departamento').value,
+                    distrito: document.getElementById('distrito').value,
+                    grupoWhatsapp: document.getElementById('grupoWhatsapp').value, // Nuevo dato
+                    fecha: new Date().toISOString(),
+                    fechaLegible: new Date().toLocaleString()
+                });
+
+                document.getElementById('formContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'flex';
+            } catch (error) {
+                console.error("Error al guardar:", error);
+                alert("Hubo un error al guardar. Verifica tu conexión a internet.");
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+                lucide.createIcons();
+            }
+        }
+
+        window.resetearFormulario = function() {
+            document.getElementById('registroForm').reset();
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('formContainer').style.display = 'block';
+            
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = false;
+            btn.innerHTML = `<span>Guardar Datos</span> <i data-lucide="save" class="w-4 h-4"></i>`;
+            lucide.createIcons();
+        }
+
+        window.descargarDesdeNube = async function() {
+            if (!auth.currentUser) { try { await signInAnonymously(auth); } catch(e) { return alert("Error de conexión."); } }
+            
+            const pass = prompt("Ingrese contraseña de administrador:");
+            if (pass !== "admin123") { alert("Contraseña incorrecta."); return; }
+
+            const btn = document.querySelector('button[onclick="descargarDesdeNube()"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "Descargando...";
+
+            try {
+                let q;
+                try { q = query(collection(db, "lideres_canapu"), orderBy("fecha", "desc")); } 
+                catch(e) { q = collection(db, "lideres_canapu"); }
+                
+                const querySnapshot = await getDocs(q);
+
+                // CSV Actualizado con nueva columna 'En Grupo Whatsapp'
+                let csvContent = "Fecha,Nombres,Apellidos,Telefono,Departamento,Distrito,En Grupo Whatsapp\n";
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const s = (str) => (str || "").replace(/"/g, '""');
+                    csvContent += `"${s(data.fechaLegible)}","${s(data.nombres)}","${s(data.apellidos)}","${s(data.telefono)}","${s(data.departamento)}","${s(data.distrito)}","${s(data.grupoWhatsapp)}"\n`;
+                });
+
+                const BOM = "\uFEFF";
+                const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "LIDERES_PEC_CANAPU.csv";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+            } catch (e) {
+                console.error(e);
+                alert("Error al descargar.");
+            } finally {
+                btn.innerHTML = originalText;
+                lucide.createIcons();
+            }
+        }
+        
+        lucide.createIcons();
+    </script>
+</body>
+</html>
