@@ -92,7 +92,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- LECCIÓN 1 (ACTIVA Y ENLAZADA CORRECTAMENTE) -->
+            <!-- LECCIÓN 1 (ACTIVA) -->
             <a href="Leccion_1.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5">
                 <div class="flex justify-between items-start mb-4">
                     <div class="icon-box p-3 rounded-xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -124,48 +124,96 @@
                 </div>
             </a>
 
-            <!-- LECCIÓN 2 (Trivia disponible) -->
-            <a href="Leccion_2.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">DISPONIBLE</div>
-                
+            <!-- LECCIÓN 2 (ACTIVA) -->
+            <a href="leccion2.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
                 <div class="flex justify-between items-start mb-4">
                     <div class="icon-box p-3 rounded-xl text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
                         <i data-lucide="heart-handshake" class="w-8 h-8"></i>
                     </div>
-                    <span class="text-xs font-bold text-slate-400 uppercase">Lección 02</span>
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
                 </div>
                 <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">Sentimientos vs Verdades</h3>
                 <p class="text-slate-500 text-sm mb-4">Descubre los 5 regalos de Dios que combaten las emociones negativas.</p>
+
+                <!-- Indicadores de Contenido -->
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="video" class="w-3 h-3 mr-1"></i> Video
+                    </span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio
+                    </span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia
+                    </span>
+                </div>
+
                 <div class="flex items-center text-purple-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
-                    Iniciar Actividad <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    Ir a la Lección 2 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </div>
             </a>
 
-            <!-- LECCIÓN 3 (Próximamente) -->
-            <div class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group opacity-75 grayscale hover:grayscale-0 transition-all">
+            <!-- LECCIÓN 3 (ACTIVA - NUEVA) -->
+            <a href="leccion3.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">NUEVO</div>
+                
                 <div class="flex justify-between items-start mb-4">
-                    <div class="bg-slate-200 p-3 rounded-xl text-slate-400">
-                        <i data-lucide="fingerprint" class="w-8 h-8"></i>
+                    <div class="icon-box p-3 rounded-xl text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                        <i data-lucide="brick-wall" class="w-8 h-8"></i>
                     </div>
-                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i>
+                    <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
                 </div>
-                <h3 class="text-xl font-bold text-slate-600 mb-2">Identidad de Hijos</h3>
-                <p class="text-slate-400 text-sm mb-4">Comprendiendo quiénes somos realmente en Cristo.</p>
-                <div class="text-xs font-bold text-slate-400 mt-auto uppercase tracking-wide">Próximamente</div>
-            </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">Las Bases de Nuestra Vida</h3>
+                <p class="text-slate-500 text-sm mb-4">Aprendiendo a construir nuestra casa sobre la Roca, sostenida por 5 regalos.</p>
 
-            <!-- LECCIÓN 4 (Próximamente) -->
-            <div class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group opacity-75">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="bg-slate-200 p-3 rounded-xl text-slate-400">
-                        <i data-lucide="mic-2" class="w-8 h-8"></i>
-                    </div>
-                    <i data-lucide="lock" class="w-4 h-4 text-slate-400"></i>
+                <!-- Indicadores de Contenido -->
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="video" class="w-3 h-3 mr-1"></i> Video
+                    </span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio
+                    </span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia
+                    </span>
                 </div>
-                <h3 class="text-xl font-bold text-slate-600 mb-2">El Poder de la Oración</h3>
-                <p class="text-slate-400 text-sm mb-4">Cómo comunicarnos efectivamente con el Padre.</p>
-                <div class="text-xs font-bold text-slate-400 mt-auto uppercase tracking-wide">Próximamente</div>
-            </div>
+
+                <div class="flex items-center text-orange-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 3 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- LECCIÓN 4 (ACTIVA - NUEVA) -->
+            <a href="leccion4.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-sky-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">NUEVO</div>
+                
+                <div class="flex justify-between items-start mb-4">
+                    <div class="icon-box p-3 rounded-xl text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                        <i data-lucide="sun" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-xs font-bold text-sky-600 bg-sky-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Su Presencia</h3>
+                <p class="text-slate-500 text-sm mb-4">Un antídoto contra la soledad: Aprendiendo a depender de Dios.</p>
+
+                <!-- Indicadores de Contenido -->
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="video" class="w-3 h-3 mr-1"></i> Video
+                    </span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio
+                    </span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                        <i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia
+                    </span>
+                </div>
+
+                <div class="flex items-center text-sky-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 4 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
 
              <!-- LECCIÓN 5 (Próximamente) -->
              <div class="lesson-card bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-inner group opacity-75">
