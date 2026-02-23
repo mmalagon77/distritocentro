@@ -11,14 +11,14 @@
 
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: #f0f9ff; /* Fondo celeste muy suave */
+            background-color: #f0f9ff;
         }
 
         .serif-font {
             font-family: 'Lora', serif;
         }
 
-        /* Fondo específico para Lección 4 - Tonos Cielo/Luz */
+        /* Fondo de cabecera en tonos celestes/azules para representar la paz y el cielo */
         .header-bg {
             background-image: linear-gradient(to right, rgba(2, 132, 199, 0.9), rgba(14, 165, 233, 0.8)), url('https://images.unsplash.com/photo-1505322022379-7c3353ee6291?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -37,7 +37,7 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- NAVEGACIÓN SUPERIOR -->
+    <!-- NAVEGACIÓN -->
     <nav class="bg-white border-b border-sky-100 sticky top-0 z-50 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="index.html" class="flex items-center text-slate-600 hover:text-sky-600 font-semibold transition-colors group">
@@ -53,10 +53,10 @@
     <header class="header-bg text-white py-16 px-6 text-center">
         <div class="max-w-3xl mx-auto">
             <div class="mb-4 inline-flex items-center justify-center bg-sky-500/30 border border-sky-400/30 rounded-full p-3">
-                <i data-lucide="sun" class="w-8 h-8 text-sky-100"></i>
+                <i data-lucide="sun" class="w-8 h-8 text-sky-200"></i>
             </div>
             <h1 class="text-3xl md:text-5xl font-bold mb-4 serif-font">Su Presencia</h1>
-            <p class="text-lg text-sky-50 font-light leading-relaxed">
+            <p class="text-lg text-slate-200 font-light leading-relaxed">
                 Un antídoto contra la soledad: Aprendiendo a depender de Dios, quien nunca nos abandona y cuya presencia llena todo vacío.
             </p>
         </div>
@@ -71,7 +71,7 @@
                 <div class="bg-red-100 p-2 rounded-lg text-red-600">
                     <i data-lucide="youtube" class="w-5 h-5"></i>
                 </div>
-                <h2 class="text-xl font-bold text-slate-800">Ver Enseñanza: Antídoto contra la Soledad</h2>
+                <h2 class="text-xl font-bold text-slate-800">Ver Enseñanza: Su Presencia</h2>
             </div>
             
             <!-- Embed de YouTube -->
@@ -79,15 +79,15 @@
                 <iframe 
                     class="w-full h-full" 
                     src="https://www.youtube.com/embed/P8ag_9ZGO1w" 
-                    title="Su Presencia: Antídoto contra la soledad" 
+                    title="Su Presencia" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     allowfullscreen>
                 </iframe>
             </div>
-            <div class="p-4 bg-sky-50 text-sm text-slate-600 flex justify-between items-center">
-                <span><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Duración aprox: 6 min</span>
-                <span class="flex items-center gap-1 text-green-700 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Disponible HD</span>
+            <div class="p-4 bg-sky-50 text-sm text-slate-500 flex justify-between items-center">
+                <span><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Duración aprox: 6:00 min</span>
+                <span class="flex items-center gap-1 text-green-600 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Disponible HD</span>
             </div>
         </section>
 
@@ -104,15 +104,16 @@
                 </div>
                 <h3 class="text-lg font-bold text-slate-800 mb-2">Podcast de la Lección</h3>
                 <p class="text-slate-500 text-sm mb-6 flex-grow">
-                    Profundiza en la promesa de que "Jehová te recogerá" escuchando este episodio.
+                    Reflexiona sobre cómo vencer la soledad escuchando la enseñanza en formato audio en cualquier lugar.
                 </p>
                 
+                <!-- Botón Spotify con enlace actualizado -->
                 <a href="https://open.spotify.com/episode/1nnjy3s6x28ZfdY7tF9ioe?si=adbMEt7LQpuyuCItc7zBAw" target="_blank" class="w-full mt-auto flex items-center justify-center gap-2 bg-[#1DB954] text-white font-bold py-3 rounded-xl hover:bg-[#1ed760] transition-colors shadow-lg shadow-green-200">
                     <i data-lucide="play-circle" class="w-5 h-5"></i> Escuchar en Spotify
                 </a>
             </div>
 
-            <!-- PRESENTACIÓN (PDF) -->
+            <!-- PRESENTACIÓN -->
             <div class="resource-card bg-white rounded-2xl p-6 border border-sky-100 shadow-sm flex flex-col">
                 <div class="flex items-start justify-between mb-4">
                     <div class="bg-amber-100 p-3 rounded-xl text-amber-600">
@@ -122,7 +123,7 @@
                 </div>
                 <h3 class="text-lg font-bold text-slate-800 mb-2">Material Visual (PDF)</h3>
                 <p class="text-slate-500 text-sm mb-6 flex-grow">
-                    Descarga los puntos clave sobre la dependencia de Dios y el devocional.
+                    Descarga o visualiza la presentación con los puntos clave sobre la dependencia de Dios.
                 </p>
                 
                 <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 mb-4 flex items-center gap-3">
@@ -136,39 +137,40 @@
                 </div>
 
                 <div class="grid grid-cols-1 gap-3 mt-auto">
-                    <!-- Enlace de descarga -->
-                    <a href="PPC_Presentacion_Leccion_4.pdf" download class="flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold py-3 rounded-xl hover:bg-slate-700 transition-colors text-sm">
-                        <i data-lucide="download" class="w-4 h-4"></i> Descargar Presentación
+                    <!-- Enlace al PDF (Abre en pestaña nueva) -->
+                    <a href="PPC_Presentacion_Leccion_4.pdf" target="_blank" class="flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold py-3 rounded-xl hover:bg-slate-700 transition-colors text-sm">
+                        <i data-lucide="eye" class="w-4 h-4"></i> Ver Presentación
                     </a>
                 </div>
             </div>
         </div>
 
         <!-- SECCIÓN 3: ACTIVIDAD (TRIVIA) -->
-        <section class="relative overflow-hidden bg-gradient-to-br from-sky-500 to-blue-600 rounded-3xl p-8 md:p-12 text-white text-center shadow-xl">
+        <section class="relative overflow-hidden bg-gradient-to-br from-sky-500 to-blue-700 rounded-3xl p-8 md:p-12 text-white text-center shadow-xl">
             <!-- Patrón de fondo -->
             <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
             
             <div class="relative z-10 max-w-2xl mx-auto">
                 <div class="bg-white/10 backdrop-blur-sm inline-block p-3 rounded-full mb-6">
-                    <i data-lucide="shield-check" class="w-8 h-8 text-sky-100"></i>
+                    <i data-lucide="brain-circuit" class="w-8 h-8 text-sky-100"></i>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 serif-font">¿Has aprendido a depender?</h2>
                 <p class="text-sky-100 mb-8 text-lg leading-relaxed">
-                    Demuestra lo que has aprendido sobre la Presencia de Dios y cómo esta vence la soledad.
+                    Pon a prueba lo que acabas de ver en el video y completa la trivia de 20 preguntas. Recuerda: ¡Necesitas 7 aciertos para aprobar!
                 </p>
                 
                 <!-- BOTÓN PRINCIPAL A LA TRIVIA -->
-                <a href="trivia_4.html" class="group inline-flex items-center justify-center gap-3 bg-white text-sky-700 font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-sky-50 transform transition-all hover:-translate-y-1 hover:shadow-2xl text-lg">
+                <a href="Trivia_4.html" class="group inline-flex items-center justify-center gap-3 bg-white text-sky-700 font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-sky-50 transform transition-all hover:-translate-y-1 hover:shadow-2xl text-lg">
                     <span>Iniciar Trivia Lección 4</span>
                     <i data-lucide="arrow-right-circle" class="w-6 h-6 group-hover:text-sky-500 transition-colors"></i>
                 </a>
+                <p class="mt-4 text-xs text-sky-200 opacity-70">Tiempo estimado: 5 minutos</p>
             </div>
         </section>
 
         <!-- BOTÓN DE REGRESO AL MENÚ -->
         <div class="flex justify-center mt-4">
-            <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-slate-800 font-semibold py-3 px-6 rounded-xl hover:bg-white hover:shadow-sm transition-all">
+            <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-slate-800 font-semibold py-3 px-6 rounded-xl hover:bg-slate-100 transition-colors">
                 <i data-lucide="grid" class="w-5 h-5"></i>
                 Regresar al Menú Principal
             </a>
