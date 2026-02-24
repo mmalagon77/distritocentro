@@ -61,12 +61,10 @@
                 <!-- Menú de escritorio -->
                 <div class="hidden md:flex items-center space-x-4 lg:space-x-6">
                     <a href="#inicio" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Inicio</a>
-                    <a href="#identidad" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Nosotros</a>
+                    <a href="https://soyict.org/somos/#misionvision" target="_blank" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Nosotros</a>
                     <a href="#agenda" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Agenda</a>
                     <a href="#lectura" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Lectura Bíblica</a>
-                    <a href="#galeria" class="text-gray-600 hover:text-brand-500 font-medium transition-colors hidden lg:block">Galería</a>
                     <a href="index_e.html" class="text-brand-600 hover:text-brand-700 font-semibold transition-colors">Estudiemos</a>
-                    <a href="index_e.html" class="text-brand-600 hover:text-brand-700 font-semibold transition-colors">De Asistente a Involucrado</a>
                     <a href="#contacto" class="bg-brand-500 text-white px-5 py-2.5 rounded-full font-medium hover:bg-brand-600 transition-all shadow-md transform hover:-translate-y-0.5 hidden xl:block">Visítanos</a>
                 </div>
 
@@ -83,11 +81,10 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full z-40">
             <div class="px-4 pt-2 pb-6 space-y-1 shadow-inner">
                 <a href="#inicio" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Inicio</a>
-                <a href="#identidad" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Quiénes Somos</a>
+                <a href="https://soyict.org/somos/#misionvision" target="_blank" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Quiénes Somos</a>
                 <a href="#agenda" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Nuestra Agenda</a>
                 <a href="#lectura" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Lectura Bíblica</a>
                 <a href="index_e.html" class="block px-3 py-3 rounded-md text-base font-semibold text-brand-600 hover:text-brand-700 hover:bg-brand-50">Estudiemos</a>
-                <a href="index_e.html" class="block px-3 py-3 rounded-md text-base font-semibold text-brand-600 hover:text-brand-700 hover:bg-brand-50">De Asistente a Involucrado</a>
                 <a href="#contacto" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Contacto</a>
             </div>
         </div>
@@ -648,12 +645,21 @@
         startInterval();
     </script>
 
-    <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/573054456682" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 hover:scale-110 transition-transform z-50 group" aria-label="Contáctenos por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="absolute right-16 bg-white text-gray-800 text-sm font-bold py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            Contáctenos
-        </span>
-    </a>
+    <!-- Menú flotante de WhatsApp -->
+    <div class="fixed bottom-6 right-6 z-50 group">
+        <!-- Opciones del menú (ocultas por defecto, visibles en hover) -->
+        <div class="absolute bottom-16 right-0 mb-3 flex flex-col space-y-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+            <a href="https://wa.me/573054456682?text=Tengo%20una%20petici%C3%B3n%20de%20oraci%C3%B3n.." target="_blank" class="bg-white text-gray-800 text-sm font-semibold py-3 px-5 rounded-2xl shadow-xl hover:bg-green-50 hover:text-green-600 transition-colors whitespace-nowrap border border-gray-100 flex items-center gap-3">
+                <i class="fas fa-praying-hands text-green-500 text-lg"></i> Tengo una petición de oración..
+            </a>
+            <a href="https://wa.me/573054456682?text=Quiero%20saber%20de%20las%20reuniones.." target="_blank" class="bg-white text-gray-800 text-sm font-semibold py-3 px-5 rounded-2xl shadow-xl hover:bg-green-50 hover:text-green-600 transition-colors whitespace-nowrap border border-gray-100 flex items-center gap-3">
+                <i class="fas fa-calendar-alt text-green-500 text-lg"></i> Quiero saber de las reuniones..
+            </a>
+        </div>
+        <!-- Botón principal -->
+        <button class="bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 hover:scale-110 transition-transform focus:outline-none">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
 </body>
 </html>
