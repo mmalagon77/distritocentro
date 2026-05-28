@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist del Alma</title>
+    <style>
+        :root {
+            --primary-color: #333;
+            --banner-bg: #e6cbbd;
+            --border-color: #ddd;
+        }
+
+        /* Configuración del fondo difuminado */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--primary-color);
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden; /* Evita scroll horizontal por el blur */
+        }
+
+        /* Capa de la imagen de fondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -20px; left: -20px; right: -20px; bottom: -20px; /* Bordes extra para que el difuminado no deje bordes blancos */
+            /* Puedes cambiar la URL de abajo por tu imagen, ej: url('image_2955c7.jpg') */
+            background-image: url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1920&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            filter: blur(12px); /* Nivel de difuminado */
+            opacity: 0.6; /* Transparencia para que no opaque todo */
+            z-index: -1;
+        }
+
+        .container {
+            /* Fondo blanco con un 90% de opacidad para dejar ver un poco el fondo */
+            background: rgba(255, 255, 255, 0.92);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px); /* Efecto cristal */
+            z-index: 1;
+        }
+
+        .header-titles {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-top: 0;
+            color: #555;
+        }
+
+        .instruction-banner {
+            background-color: var(--banner-bg);
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            color: #4a3b32;
+        }
+
+        .question-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .question-text {
+            flex: 1;
+            padding-right: 20px;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .options {
+            display: flex;
+            gap: 15px;
+            min-width: 220px;
+        }
+
+        .options label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: #4a3b32;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            background-color: #2c231e;
+            transform: translateY(-2px);
+        }
+
+        .resultados {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(241, 241, 241, 0.9);
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .resultados h3 {
+            margin-top: 0;
+            color: #4a3b32;
+        }
+
+        .resultados-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+
+        .res-item span {
+            font-weight: bold;
+            font-size: 1.8rem;
+            display: block;
+            color: #4a3b32;
+        }
+
+        /* Responsividad para móviles */
+        @media (max-width: 600px) {
+            .question-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .options {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-titles">
+            <h1>Taller de Confrontación: El Diagnóstico del Alma</h1>
+            <h2>Checklist del Alma</h2>
+        </div>
+
+        <div class="instruction-banner">
+            Responda con honestidad. Si alguna respuesta es SÍ o A VECES, está viviendo en desequilibrio.
+        </div>
+
+        <form id="quizForm">
+            <div class="question-row">
+                <div class="question-text">¿Su vida se ajusta a Dios en toda área y decisión?</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="si"> Sí</label>
+                    <label><input type="radio" name="q1" value="no"> No</label>
+                    <label><input type="radio" name="q1" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="question-row">
+                <div class="question-text">¿Le falta deseo o concentración para estudiar la Palabra?</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="si"> Sí</label>
+                    <label><input type="radio" name="q2" value="no"> No</label>
+                    <label><input type="radio" name="q2" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="question-row">
+                <div class="question-text">¿Sus emociones determinan lo que decide hacer?</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="si"> Sí</label>
+                    <label><input type="radio" name="q3" value="no"> No</label>
+                    <label><input type="radio" name="q3" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="question-row">
+                <div class="question-text">¿Tiende a ofenderse fácilmente (susceptibilidad)?</div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="si"> Sí</label>
+                    <label><input type="radio" name="q4" value="no"> No</label>
+                    <label><input type="radio" name="q4" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="question-row">
+                <div class="question-text">¿Se siente merecedor y se frustra si no llega lo esperado?</div>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="si"> Sí</label>
+                    <label><input type="radio" name="q5" value="no"> No</label>
+                    <label><input type="radio" name="q5" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="question-row">
+                <div class="question-text">¿Hay preocupación, ansiedad o temor constante?</div>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="si"> Sí</label>
+                    <label><input type="radio" name="q6" value="no"> No</label>
+                    <label><input type="radio" name="q6" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="question-row">
+                <div class="question-text">¿Ora solo por urgencias y no por dependencia genuina?</div>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="si"> Sí</label>
+                    <label><input type="radio" name="q7" value="no"> No</label>
+                    <label><input type="radio" name="q7" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="question-row">
+                <div class="question-text">¿Se desmotiva y desanima con facilidad?</div>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="si"> Sí</label>
+                    <label><input type="radio" name="q8" value="no"> No</label>
+                    <label><input type="radio" name="q8" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="question-row">
+                <div class="question-text">¿Existen roces constantes o distancia con su cónyuge/familia?</div>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="si"> Sí</label>
+                    <label><input type="radio" name="q9" value="no"> No</label>
+                    <label><input type="radio" name="q9" value="aveces"> A veces</label>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button type="button" onclick="calcularResultados()">Ver Diagnóstico</button>
+            </div>
+        </form>
+
+        <!-- Contenedor de Resultados -->
+        <div class="resultados" id="resultadosBox">
+            <h3>Resultados del Diagnóstico</h3>
+            <div class="resultados-grid">
+                <div class="res-item">
+                    Sí
+                    <span id="countSi">0</span>
+                </div>
+                <div class="res-item">
+                    No
+                    <span id="countNo">0</span>
+                </div>
+                <div class="res-item">
+                    A veces
+                    <span id="countAveces">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calcularResultados() {
+            const totalPreguntas = 9;
+            let si = 0;
+            let no = 0;
+            let aveces = 0;
+            let respondidas = 0;
+
+            for (let i = 1; i <= totalPreguntas; i++) {
+                const opciones = document.getElementsByName('q' + i);
+                for (let j = 0; j < opciones.length; j++) {
+                    if (opciones[j].checked) {
+                        respondidas++;
+                        if (opciones[j].value === 'si') si++;
+                        else if (opciones[j].value === 'no') no++;
+                        else if (opciones[j].value === 'aveces') aveces++;
+                    }
+                }
+            }
+
+            if (respondidas < totalPreguntas) {
+                alert("Por favor, responda todas las preguntas para obtener su diagnóstico completo.");
+                return;
+            }
+
+            document.getElementById('countSi').innerText = si;
+            document.getElementById('countNo').innerText = no;
+            document.getElementById('countAveces').innerText = aveces;
+
+            document.getElementById('resultadosBox').style.display = 'block';
+            document.getElementById('resultadosBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
