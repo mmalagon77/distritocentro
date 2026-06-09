@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minijuego de Potencias en Canvas</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #1a252f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+        h1 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #bdc3c7;
+            margin-bottom: 20px;
+        }
+        canvas {
+            background-color: #2c3e50;
+            border: 4px solid #34495e;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🚀 Aventura Espacial de Potencias</h1>
+    <p>¡Resuelve la operación y haz clic en el meteorito con el exponente correcto!</p>
+
+    <!-- Aquí está nuestro Canvas -->
+    <canvas id="miCanvas" width="800" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Base de datos de nuestros 10 ejercicios usando superíndices Unicode
+        const preguntas = [
+            { q: "10³ · 10⁵ = 10^?", a: 8, options: [3, 8, 15] },
+            { q: "7⁸ / 7⁶ = 7^?", a: 2, options: [2, 14, 48] },
+            { q: "(4²)³ = 4^?", a: 6, options: [5, 6, 8] },
+            { q: "10⁻⁴ · 10⁷ = 10^?", a: 3, options: [-11, 3, 28] },
+            { q: "10⁵ / 10⁸ = 10^?", a: -3, options: [3, -3, 13] },
+            { q: "(5³)⁰ = 5^?", a: 0, options: [0, 3, 1] },
+            { q: "10⁻² / 10⁻⁵ = 10^?", a: 3, options: [-7, -3, 3] },
+            { q: "2⁴ · 2⁻⁴ = 2^?", a: 0, options: [0, 8, -8] },
+            { q: "(10⁻¹)⁻² = 10^?", a: 2, options: [2, -2, -3] },
+            { q: "3⁷ / 3⁶ = 3^?", a: 1, options: [0, 1, 13] }
+        ];
+
+        let preguntaActual = 0;
+        let puntaje = 0;
+        let burbujas = [];
+
+        // Colores para las opciones
+        const colores = ['#e74c3c', '#f1c40f', '#2ecc71', '#9b59b6', '#e67e22'];
+
+        function cargarPregunta() {
+            if (preguntaActual >= preguntas.length) {
+                dibujar(); // Dibuja la pantalla final
+                return;
+            }
+
+            let q = preguntas[preguntaActual];
+            
+            // Mezclar las opciones aleatoriamente
+            let opcionesMezcladas = [...q.options].sort(() => Math.random() - 0.5);
+            
+            // Crear los 3 "meteoritos" (burbujas)
+            burbujas = [
+                { x: width * 0.25, y: height * 0.65, r: 60, text: opcionesMezcladas[0], color: colores[0] },
+                { x: width * 0.50, y: height * 0.65, r: 60, text: opcionesMezcladas[1], color: colores[1] },
+                { x: width * 0.75, y: height * 0.65, r: 60, text: opcionesMezcladas[2], color: colores[2] }
+            ];
+
+            dibujar();
+        }
+
+        function dibujar() {
+            // Limpiar el lienzo
+            ctx.clearRect(0, 0, width, height);
+
+            // Pantalla Final
+            if (preguntaActual >= preguntas.length) {
+                ctx.fillStyle = '#2ecc71';
+                ctx.font = 'bold 50px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('¡JUEGO TERMINADO!', width / 2, height / 2 - 30);
+                
+                ctx.fillStyle = 'white';
+                ctx.font = '30px sans-serif';
+                ctx.fillText(`Tu puntaje final: ${puntaje} / 10`, width / 2, height / 2 + 30);
+                
+                if (puntaje === 10) {
+                    ctx.fillStyle = '#f1c40f';
+                    ctx.fillText('🏆 ¡Puntuación Perfecta!', width / 2, height / 2 + 90);
+                }
+                return;
+            }
+
+            // Título de progreso
+            ctx.fillStyle = '#7f8c8d';
+            ctx.font = 'bold 24px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(`Nivel ${preguntaActual + 1} de 10`, width / 2, 50);
+
+            // Dibujar la Ecuación Matemática
+            ctx.fillStyle = '#ecf0f1';
+            ctx.font = 'bold 60px sans-serif';
+            ctx.fillText(preguntas[preguntaActual].q, width / 2, 160);
+
+            // Dibujar las Burbujas/Meteoritos
+            burbujas.forEach(b => {
+                // Dibujar el círculo
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+                ctx.fillStyle = b.color;
+                ctx.fill();
+                
+                // Borde del círculo
+                ctx.lineWidth = 6;
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.stroke();
+
+                // Texto (El exponente)
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 45px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(b.text, b.x, b.y);
+            });
+        }
+
+        // Detectar clics en el Canvas
+        canvas.addEventListener('click', (e) => {
+            if (preguntaActual >= preguntas.length) return;
+
+            // Obtener coordenadas exactas del clic dentro del canvas
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Comprobar si se hizo clic en alguna burbuja usando el Teorema de Pitágoras
+            burbujas.forEach(b => {
+                const dx = mouseX - b.x;
+                const dy = mouseY - b.y;
+                const distancia = Math.sqrt(dx * dx + dy * dy);
+
+                if (distancia <= b.r) {
+                    // ¡Hizo clic en una burbuja! Verificamos si es la respuesta correcta
+                    if (b.text === preguntas[preguntaActual].a) {
+                        puntaje++;
+                    }
+                    // Pasamos a la siguiente pregunta
+                    preguntaActual++;
+                    cargarPregunta();
+                }
+            });
+        });
+
+        // Cambiar el cursor a "manito" si pasa sobre una burbuja
+        canvas.addEventListener('mousemove', (e) => {
+            if (preguntaActual >= preguntas.length) { 
+                canvas.style.cursor = 'default'; 
+                return; 
+            }
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            let sobreBurbuja = false;
+            burbujas.forEach(b => {
+                const dx = mouseX - b.x;
+                const dy = mouseY - b.y;
+                if (Math.sqrt(dx * dx + dy * dy) <= b.r) {
+                    sobreBurbuja = true;
+                }
+            });
+            
+            canvas.style.cursor = sobreBurbuja ? 'pointer' : 'default';
+        });
+
+        // Iniciar el juego
+        cargarPregunta();
+    </script>
+</body>
+</html>
